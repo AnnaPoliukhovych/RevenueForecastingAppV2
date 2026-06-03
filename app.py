@@ -46,8 +46,9 @@ def rename_forecast_table(forecast_table):
 
 try:
     model_artifact = load_saved_model_artifact()
-except (FileNotFoundError, ValueError) as error:
-    st.error(str(error))
+except Exception as error:
+    import streamlit as st
+    st.error(f"Model load failed: {error}")
     st.stop()
 
 
